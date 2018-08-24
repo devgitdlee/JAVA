@@ -3,6 +3,8 @@ package Function;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -17,7 +19,7 @@ public class Execl {
 
 	}
 	//sql = 데이터, dir = 경로, file = 파일이름
-    public void ExeclInsert(String sql, String dir, String file) {
+    public void ExeclInsert(String dir, String file) {
         
     	HSSFWorkbook workbook = new HSSFWorkbook(); // 새 엑셀 생성
     	HSSFSheet sheet = workbook.createSheet("시트명"); // 새 시트(Sheet) 생성
@@ -37,7 +39,7 @@ public class Execl {
     }
     public void Execlout(String dir, String file) {
     	 try {
-             FileInputStream fis = new FileInputStream(dir+"/"+file+".xlsx");
+             FileInputStream fis = new FileInputStream(dir+"/"+file+".xls");
              HSSFWorkbook workbook = new HSSFWorkbook(fis);
              HSSFSheet sheet = workbook.getSheetAt(0); // 해당 엑셀파일의 시트(Sheet) 수
              int rows = sheet.getPhysicalNumberOfRows(); // 해당 시트의 행의 개수
