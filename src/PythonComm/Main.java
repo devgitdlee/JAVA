@@ -98,13 +98,13 @@ public class Main extends Thread{
 	public String receive() {
 		while(true) {
 			try {
-				BufferedReader in  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				//byte[] buffer = new byte[1024];
-				/*
-				int length = in.(buffer);
-				if(length == -1) throw new IOException();
-				String message = new String(buffer, 0, length, "UTF-8");
-				*/
+				BufferedReader in  = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+				byte[] buffer = new byte[1024];
+				
+				//int length = in.read(buffer);
+				//if(length == -1) throw new IOException();
+				//String message = new String(buffer, 0, length, "UTF-8");
+
 				String message = in.readLine();
 				return message;
 				
@@ -151,7 +151,8 @@ public class Main extends Thread{
 				continue;
 			}
 			System.out.println("Receive:"+rev);
-			sen = oracle.Procedure(rev);
+			sen = rev;
+			//sen = oracle.Procedure(rev);
 			com.send(sen);
 			System.out.println("Send:"+sen);;
 		}
